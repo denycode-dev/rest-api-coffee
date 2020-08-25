@@ -12,9 +12,9 @@ const books = {
       })
     })
   },
-  getAllExpensiveBook: () => {
+  getAllbook: () => {
     return new Promise((resolve, reject) => {
-      connection.query('SELECT * FROM product ORDER BY price DESC', (err, result) => {
+      connection.query('SELECT * FROM product', (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -23,9 +23,31 @@ const books = {
       })
     })
   },
-  getAllbook: () => {
+  searchByName: (nama) => {
     return new Promise((resolve, reject) => {
-      connection.query('SELECT * FROM product', (err, result) => {
+      connection.query(`SELECT * FROM product WHERE name LIKE "%${nama}%"`, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      })
+    })
+  },
+  sortProduct: (table) => {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM product ORDER BY ${table} ASC`, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      })
+    })
+  },
+  pageProduct: (num) => {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM product LIMIT ${num} `, (err, result) => {
         if (!err) {
           resolve(result)
         } else {

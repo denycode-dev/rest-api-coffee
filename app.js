@@ -27,6 +27,7 @@ app.use('/api/v1/', routes)
 // config PORT on .env
 const PORT = process.env.PORT
 
+app.use('/uploads/image', express.static('./src/uploads/image'))
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
 })

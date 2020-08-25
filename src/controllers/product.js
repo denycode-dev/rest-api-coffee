@@ -1,5 +1,7 @@
 const booksModels = require('../models/product')
 const hellper = require('../helpers/helpers')
+const redis = require('redis')
+const client = redis.createClient(process.env.PORT_REDIS)
 
 const books = {
   getBookById: (req, res) => {
@@ -7,7 +9,6 @@ const books = {
     booksModels.getBookById(id)
       .then((result) => {
         resultBooks = result
-        // res.json(resultBooks);
         hellper.renponse(res, resultBooks, 200, null)
       })
       .catch((err) => {
@@ -18,8 +19,42 @@ const books = {
     booksModels.getAllbook()
       .then((result) => {
         resultBooks = result
-        // res.json(resultBooks);
+        client.setex('getAllProduct', 60 * 60 * 24, JSON.stringify(resultBooks))
         hellper.renponse(res, resultBooks, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  searchByName: (req, res) => {
+    const nama = req.params.nama
+    booksModels.searchByName(nama)
+      .then((result) => {
+        resultProduct = result
+        hellper.renponse(res, resultProduct, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      }).then((result) => {
+        resultProduct = result
+        // res.json(resultProduct)
+        hellper.renponse(res, resultProduct, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  sortProduct: (req, res) => {
+    const table = req.params.table
+    booksModels.sortProduct(table)
+  },
+  pageProduct: (req, res) => {
+    const num = req.params.num
+    booksModels.pageProduct(num)
+      .then((result) => {
+        resultProduct = result
+        // res.json(resultProduct)
+        hellper.renponse(res, resultProduct, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -43,7 +78,7 @@ const books = {
       .then((result) => {
         const resultBooks = result
         console.log(result)
-        res.json(resultBooks)
+        hellper.renponse(res, resultBooks, 201, null)
       })
       .catch((err) => {
         console.log(err)
@@ -54,24 +89,22 @@ const books = {
     booksModels.deleteBook(id)
       .then((result) => {
         resultBooks = result
-        res.json(resultBooks)
+        hellper.renponse(res, resultBooks, 204, null)
       })
       .catch((err) => {
         console.log(err)
       })
   },
   insertBook: (req, res) => {
-    console.log('hello')
     console.log(req.body)
     const {
       name,
-      image,
       price,
       idCategory
     } = req.body
     const data = {
       name,
-      image,
+      image: `http://localhost:18000/uploads/image/${req.file.filename}`,
       price,
       idCategory
     }
@@ -79,7 +112,7 @@ const books = {
       .then((result) => {
         const resultBooks = result
         console.log(result)
-        hellper.renponse(res, resultBooks, 200, null)
+        hellper.renponse(res, resultBooks, 201, null)
       })
       .catch((err) => {
         console.log(err)

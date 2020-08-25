@@ -15,12 +15,17 @@
   "author": "denycode",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "docusaurus": "^1.14.6",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
-    "mysql2": "^2.1.0"
+    "multer": "^1.4.2",
+    "mysql2": "^2.1.0",
+    "redis": "^3.0.2"
   },
   "bugs": {
     "url": "https://github.com/deni-irawan40563/rest-api-coffee/issues"
