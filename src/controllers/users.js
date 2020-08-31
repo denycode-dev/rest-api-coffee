@@ -33,8 +33,8 @@ module.exports = {
     })
   },
   login: (req, res) => {
-    const { name, password } = req.body
-    modelUser.nameCheck(name)
+    const { email, password } = req.body
+    modelUser.nameCheck(email)
       .then((result) => {
         if (result.length < 1) return hellper.renponse(res, { message: 'Name Not Found' }, 201, null)
         const user = result[0]
@@ -42,7 +42,7 @@ module.exports = {
           if (!resultsCompare) return hellper.renponse(res, { message: 'incored password' }, 201, null)
           const payload = {
             id: user.id,
-            name: user.name,
+            name: user.email,
             roleId: user.roleId
           }
           jwt.sign(payload, process.env.RUMPI, { expiresIn: '1d' }, (err, token) => {

@@ -7,8 +7,8 @@ const { getall } = require('../middleware/redis')
 // const { cleargetall } = require('../middleware/redis')
 
 router
-  .get('/:id', booksController.getBookById)
   .get('/', getall, booksController.getAllbook)
+  .get('/:id', booksController.getBookById)
   .get('/search/:nama', booksController.searchByName)
   .get('/sort/:table', booksController.sortProduct)
   .get('/limit/:num', booksController.pageProduct)

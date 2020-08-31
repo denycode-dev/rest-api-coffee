@@ -13,7 +13,7 @@ module.exports = {
   },
   nameCheck: (name) => {
     return new Promise((resolve, reject) => {
-      connection.query('SELECT * FROM users WHERE name = ?', name, (err, result) => {
+      connection.query('SELECT * FROM users WHERE email = ?', name, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
