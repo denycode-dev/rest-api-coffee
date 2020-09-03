@@ -1,6 +1,6 @@
 # Web Pos app for F&B Industry
 
-![Image Banner]('ss backend1.JPG')
+![Image Banner]('ssbackend1.JPG')
 
 ## Table of Contents
 
@@ -15,25 +15,28 @@
 * [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
-![Image Banner](ss backend2.JPG)
+![Image Banner](ssbackend2.JPG)
 ## About The Project
 
-This application is made to support sales activities in the f & b industry so that between divisions from cashier to managerial level can coordinate well where all the features in this application are specially designed for this.
+this is the project file for the backend in other words it is a restful api which has all the basic functionality of a restful api.
 
-Here's why:
-* Great responsive display for any device
-* Does not reload pages when moving between pages
-* made with all the latest and most up-to-date tools and technology today
+Feature:
+* Get data from database mysql
+* Post data from database
+* Patch data (edit/update file) from database
+* Delete data from database
+* Register for new user
+* Log in for user
+* Hash data password
+* Redis to improve performance
 
 Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue.
 
 ### Built With
 
-* [Bootstrap](https://getbootstrap.com)
-* [Vue.js](https://docs.vuejs.id/)
 * [Node.js](https://nodejs.org/en/)
-
-
+* [Mysql](https://www.mysql.com/)
+* [Redis](https://redis.io/)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -51,24 +54,20 @@ npm install npm@latest -g
 
 ### Installation
 
-1. Get a free API Key at [https://github.com/deni-irawan40563/rest-api-coffee.git](https://github.com/deni-irawan40563/rest-api-coffee.git)
-2. Clone the repo
+1. Clone the repo
 ```sh
-git clone https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry.git
+git clone https://github.com/deni-irawan40563/rest-api-coffee.git
 ```
-3. Install NPM packages
+2. Install NPM packages
 ```sh
 npm install
 ```
-4. Enter your API in `config.js`
-```JS
-const API_KEY = 'ENTER YOUR API';
-```
+3. Import the database for this project coffeproject.sql
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/deni-irawan40563/rest-api-coffee.git) for a list of proposed features (and known issues).
 
 
 
@@ -94,12 +93,14 @@ Contributions are what make the open source community such an amazing place to b
 
 <!-- ACKNOWLEDGEMENTS -->
 ## npm package
-* [Axios](https://www.npmjs.com/package/axios)
-* [Vuex](https://vuex.vuejs.org/)
-* [Vue-Router](https://router.vuejs.org/)
-* [Core-js](https://www.npmjs.com/package/core-js)
-* [Font Awesome](https://fontawesome.com)
-
+* [Bcrypt](https://www.npmjs.com/package/bcrypt)
+* [Body-parser](https://www.npmjs.com/package/body-parser)
+* [Cors](https://www.npmjs.com/package/cors)
+* [Dotenv](https://www.npmjs.com/package/dotenv)
+* [Express](https://www.npmjs.com/package/express)
+* [Morgan](https://www.npmjs.com/package/morgan)
+* [Multer](https://www.npmjs.com/package/multer)
+* [Mysql2](https://www.npmjs.com/package/mysql2)
 
 ## Project setup
 ```
