@@ -1,6 +1,6 @@
-# Web Pos app for F&B Industry
+# Rest api Web Pos app for F&B Industry
 
-![Image Banner]('ssbackend1.JPG')
+![Image Banner](ssbackend1.JPG)
 
 ## Table of Contents
 
@@ -111,3 +111,4 @@ npm install
 ```
 npm run dev
 ```
+for Front-end this rest api [Click Here](https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry)
