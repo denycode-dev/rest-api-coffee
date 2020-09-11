@@ -36,10 +36,10 @@ module.exports = {
     const { email, password } = req.body
     modelUser.nameCheck(email)
       .then((result) => {
-        if (result.length < 1) return hellper.renponse(res, { message: 'Name Not Found' }, 201, null)
+        if (result.length < 1) return hellper.renponse(res, { message: 'Name Not Found' }, 401, null)
         const user = result[0]
         bcrypt.compare(password, user.password).then(function (resultsCompare) {
-          if (!resultsCompare) return hellper.renponse(res, { message: 'incored password' }, 201, null)
+          if (!resultsCompare) return hellper.renponse(res, { message: 'incored password' }, 403, null)
           const payload = {
             id: user.id,
             name: user.email,

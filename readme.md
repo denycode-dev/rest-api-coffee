@@ -1,7 +1,5 @@
 # Rest api Web Pos app for F&B Industry
 
-![Image Banner](ssbackend1.JPG)
-
 ## Table of Contents
 
 * [About the Project](#about-the-project)
@@ -15,7 +13,6 @@
 * [Acknowledgements](#acknowledgements)
 
 <!-- ABOUT THE PROJECT -->
-![Image Banner](ssbackend2.JPG)
 ## About The Project
 
 this is the project file for the backend in other words it is a restful api which has all the basic functionality of a restful api.
@@ -63,7 +60,7 @@ git clone https://github.com/deni-irawan40563/rest-api-coffee.git
 npm install
 ```
 3. Import the database for this project coffeproject.sql
-
+4. Look postman collection for this rest-api [here](https://www.getpostman.com/collections/af737e0e70a543b32d65)
 <!-- ROADMAP -->
 ## Roadmap
 
