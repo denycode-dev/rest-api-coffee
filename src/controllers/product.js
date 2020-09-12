@@ -104,7 +104,7 @@ const books = {
     } = req.body
     const data = {
       name,
-      image: `http://localhost:18000/uploads/image/${req.file.filename}`,
+      image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
       price,
       idCategory
     }

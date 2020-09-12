@@ -17,7 +17,7 @@ module.exports = {
       tlpNumber,
       password,
       roleId ,
-      image: `http://localhost:18000/uploads/image/${req.file.filename}`,
+      image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
       createAt: new Date(),
       updateAt: new Date()
     }
