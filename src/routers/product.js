@@ -3,11 +3,11 @@ const booksController = require('../controllers/product')
 const { verification } = require('../middleware/auth')
 const router = express.Router()
 const { upload } = require('../middleware/multer')
-const { getall } = require('../middleware/redis')
+// const { redis } = require('../middleware/redis')
 // const { cleargetall } = require('../middleware/redis')
 
 router
-  .get('/', getall, booksController.getAllbook)
+  .get('/', booksController.getAllbook)
   .get('/:id', booksController.getBookById)
   .get('/search/:nama', booksController.searchByName)
   .get('/sort/:table', booksController.sortProduct)
