@@ -21,5 +21,16 @@ module.exports = {
         }
       })
     })
+  },
+  getAllUsers: () => {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT * FROM users', (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      })
+    })
   }
 }

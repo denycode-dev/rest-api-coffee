@@ -3,8 +3,10 @@ const modelUser = require('../models/users')
 const hellper = require('../helpers/helpers')
 const jwt = require('jsonwebtoken')
 const saltRounds = 10
+const redis = require('redis')
 // const myPlaintextPassword = process.env.PLAINPASSWORD
-const salt = bcrypt.genSaltSync(saltRounds);
+const salt = bcrypt.genSaltSync(saltRounds)
+const client = redis.createClient(process.env.PORT_REDIS)
 
 // const someOtherPlaintextPassword = 'not_bacon';
 module.exports = {
@@ -56,6 +58,17 @@ module.exports = {
           .catch((err) => {
             console.log(err)
           })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  getAllUsers: (req, res) => {
+    modelUser.getAllUsers()
+      .then((result) => {
+        user = result
+        client.setex('getAllUser', 60 * 60 * 24, JSON.stringify(user))
+        hellper.renponse(res, user, 200, null)
       })
       .catch((err) => {
         console.log(err)
