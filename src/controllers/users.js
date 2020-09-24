@@ -11,14 +11,14 @@ const client = redis.createClient(process.env.PORT_REDIS)
 // const someOtherPlaintextPassword = 'not_bacon';
 module.exports = {
   register: (req, res) => {
-    const { name, division, email, tlpNumber, password, roleId} = req.body
+    const { name, email, tlpNumber, password} = req.body
     const data = {
       name,
-      division,
       email,
       tlpNumber,
+      division: 1,
+      roleId: 2,
       password,
-      roleId ,
       image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
       createAt: new Date(),
       updateAt: new Date()
