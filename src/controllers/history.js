@@ -1,12 +1,12 @@
 const amoutHistory = require('../models/history')
-const hellper = require('../helpers/helpers')
+const helpers = require('../helpers/helpers')
 
 const books = {
   getAllHistory: (req, res) => {
     amoutHistory.getAllHistory()
       .then((result) => {
         resultBooks = result
-        hellper.renponse(res, resultBooks, 200, null)
+        helpers.response(res, null, resultBooks, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -16,7 +16,7 @@ const books = {
     amoutHistory.getAllamout()
       .then((result) => {
         resultBooks = result
-        hellper.renponse(res, resultBooks, 200, null)
+        helpers.response(res, null, resultBooks, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -26,7 +26,7 @@ const books = {
     amoutHistory.getTotalInvoice()
       .then((result) => {
         resultBooks = result
-        hellper.renponse(res, resultBooks, 200, null)
+        helpers.response(res, null, resultBooks, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -52,7 +52,7 @@ const books = {
       .then((result) => {
         const resultInvoice = result
         console.log(resultInvoice)
-        hellper.renponse(res, resultInvoice, 200, null)
+        helpers.response(res, null, resultInvoice, 200, null)
       })
       .catch((err) => {
         console.log(err)

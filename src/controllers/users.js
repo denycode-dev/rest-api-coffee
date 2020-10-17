@@ -26,7 +26,7 @@ module.exports = {
       data.password = hash
       modelUser.register(data)
         .then((result) => {
-          hellper.renponse(res, result, 201, null)
+          hellper.response(res, null, result, 201, null)
         })
         .catch((err) => {
           console.log(err)
@@ -37,10 +37,10 @@ module.exports = {
     const { email, password } = req.body
     modelUser.nameCheck(email)
       .then((result) => {
-        if (result.length < 1) return hellper.renponse(res, { message: 'Name Not Found' }, 401, null)
+        if (result.length < 1) return hellper.response(res, null, { message: 'Name Not Found' }, 401, null)
         const user = result[0]
         bcrypt.compare(password, user.password).then(function (resultsCompare) {
-          if (!resultsCompare) return hellper.renponse(res, { message: 'incored password' }, 403, null)
+          if (!resultsCompare) return hellper.response(res, null, { message: 'incored password' }, 403, null)
           const payload = {
             id: user.id,
             name: user.email,
@@ -51,7 +51,7 @@ module.exports = {
             delete user.password
             delete user.updateAt
             delete user.createAt
-            hellper.renponse(res, user, 200)
+            hellper.response(res, null, user, 200)
           })
         })
           .catch((err) => {
@@ -67,7 +67,7 @@ module.exports = {
       .then((result) => {
         user = result
         client.setex('getAllUser', 60 * 60 * 24, JSON.stringify(user))
-        hellper.renponse(res, user, 200, null)
+        hellper.response(res, null, user, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -78,7 +78,7 @@ module.exports = {
     modelUser.getUserById(id)
       .then((result) => {
         resultBooks = result
-        hellper.renponse(res, resultBooks, 200, null)
+        hellper.response(res, null, resultBooks, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -104,7 +104,7 @@ module.exports = {
       .then((result) => {
         const resultUser = result
         console.log(result)
-        hellper.renponse(res, resultUser, 200, null)
+        hellper.response(res, null, resultUser, 200, null)
       })
       .catch((err) => {
         console.log(err)

@@ -8,7 +8,7 @@ const { upload } = require('../middleware/multer')
 router
   .get('/', usersController.getAllUsers)
   .get('/:id', usersController.getUserById)
-  .post('/register',upload.single('image'),usersController.register)
+  .post('/register',upload,usersController.register)
   .post('/login', usersController.login)
   .patch('/:id', usersController.updateUsers)
 

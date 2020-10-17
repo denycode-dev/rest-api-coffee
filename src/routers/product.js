@@ -14,8 +14,8 @@ router
   .get('/sort/desc/:table', booksController.sortProductDESC)
   .get('/limit/:num', booksController.pageProduct)
 
-  .post('/' /*verification*/, upload.single('image'), booksController.insertBook)
-  .patch('/:id' /*verification*/,upload.single('image') , booksController.updateBook)
+  .post('/' /*verification*/, upload, booksController.insertBook)
+  .patch('/:id' /*verification*/,upload, booksController.updateBook)
   .delete('/:id' /*verification*/, booksController.deleteBook)
 
 module.exports = router
