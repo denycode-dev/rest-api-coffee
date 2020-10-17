@@ -16,7 +16,6 @@ module.exports = {
       name,
       email,
       tlpNumber,
-      division: 1,
       roleId: 2,
       password,
       image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
@@ -69,6 +68,43 @@ module.exports = {
         user = result
         client.setex('getAllUser', 60 * 60 * 24, JSON.stringify(user))
         hellper.renponse(res, user, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  getUserById: (req, res) => {
+    const id = req.params.id
+    modelUser.getUserById(id)
+      .then((result) => {
+        resultBooks = result
+        hellper.renponse(res, resultBooks, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  updateUsers: (req, res) => {
+    const id = req.params.id
+    const {
+      name,
+      email,
+      tlpNumber,
+      password,
+    } = req.body
+    const data = {
+      name,
+      email,
+      tlpNumber,
+      password,
+      image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
+      updateAt : new Date()
+    }
+    booksModels.updateBook(id, data)
+      .then((result) => {
+        const resultUser = result
+        console.log(result)
+        hellper.renponse(res, resultUser, 200, null)
       })
       .catch((err) => {
         console.log(err)

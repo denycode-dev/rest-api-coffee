@@ -34,9 +34,20 @@ const books = {
       })
     })
   },
-  sortProduct: (table) => {
+  sortProductASC: (table) => {
     return new Promise((resolve, reject) => {
       connection.query(`SELECT * FROM product ORDER BY ${table} ASC`, (err, result) => {
+        if (!err) {
+          resolve(result)
+        } else {
+          reject(new Error(err))
+        }
+      })
+    })
+  },
+  sortProductDESC: (table) => {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT * FROM product ORDER BY ${table} DESC`, (err, result) => {
         if (!err) {
           resolve(result)
         } else {
@@ -79,7 +90,6 @@ const books = {
     })
   },
   insertBook: (data) => {
-    console.log(data)
     return new Promise((resolve, reject) => {
       connection.query('INSERT INTO product SET ?', data, (err, result) => {
         if (!err) {

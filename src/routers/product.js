@@ -10,11 +10,12 @@ router
   .get('/', booksController.getAllbook)
   .get('/:id', booksController.getBookById)
   .get('/search/:nama', booksController.searchByName)
-  .get('/sort/:table', booksController.sortProduct)
+  .get('/sort/asc/:table', booksController.sortProductASC)
+  .get('/sort/desc/:table', booksController.sortProductDESC)
   .get('/limit/:num', booksController.pageProduct)
 
   .post('/' /*verification*/, upload.single('image'), booksController.insertBook)
-  .patch('/:id' /*verification*/, booksController.updateBook,upload.single('image'))
+  .patch('/:id' /*verification*/,upload.single('image') , booksController.updateBook)
   .delete('/:id' /*verification*/, booksController.deleteBook)
 
 module.exports = router

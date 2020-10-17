@@ -16,6 +16,12 @@ const books = {
       })
   },
   getAllbook: (req, res) => {
+    // const sortdata = req.query.sort || 'id';
+    // const typeSort = req.query.typesort || 'ASC' 
+    // const search = req.query.search
+    // const limit = req.query.limit || 9
+    // const offset = ((req.query.page || 1) -1) * limit
+    // booksModels.getAllbook({sortdata,typeSort, search, limit, offset})
     booksModels.getAllbook()
       .then((result) => {
         resultBooks = result
@@ -37,23 +43,41 @@ const books = {
         console.log(err)
       }).then((result) => {
         resultProduct = result
-        // res.json(resultProduct)
         hellper.renponse(res, resultProduct, 200, null)
       })
       .catch((err) => {
         console.log(err)
       })
   },
-  sortProduct: (req, res) => {
+  sortProductASC: (req, res) => {
     const table = req.params.table
-    booksModels.sortProduct(table)
+    console.log(table)
+    booksModels.sortProductASC(table)
+    .then((result) => {
+      resultProduct = result
+      hellper.renponse(res, resultProduct, 200, null)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+  },
+  sortProductDESC: (req, res) => {
+    const table = req.params.table
+    console.log(table)
+    booksModels.sortProductDESC(table)
+    .then((result) => {
+      resultProduct = result
+      hellper.renponse(res, resultProduct, 200, null)
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   },
   pageProduct: (req, res) => {
     const num = req.params.num
     booksModels.pageProduct(num)
       .then((result) => {
         resultProduct = result
-        // res.json(resultProduct)
         hellper.renponse(res, resultProduct, 200, null)
       })
       .catch((err) => {
@@ -61,16 +85,16 @@ const books = {
       })
   },
   updateBook: (req, res) => {
-    const id = req.params.idtes
+    const id = req.params.id
     const {
       name,
-      image,
       price,
+      image,
       idCategory
     } = req.body
     const data = {
       name,
-      image,
+      image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
       price,
       idCategory
     }
@@ -78,18 +102,7 @@ const books = {
       .then((result) => {
         const resultBooks = result
         console.log(result)
-        hellper.renponse(res, resultBooks, 201, null)
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  },
-  deleteBook: (req, res) => {
-    const id = req.params.id
-    booksModels.deleteBook(id)
-      .then((result) => {
-        resultBooks = result
-        hellper.renponse(res, resultBooks, 204, null)
+        hellper.renponse(res, resultBooks, 200, null)
       })
       .catch((err) => {
         console.log(err)
@@ -100,6 +113,7 @@ const books = {
     const {
       name,
       price,
+      image,
       idCategory
     } = req.body
     const data = {
@@ -112,7 +126,18 @@ const books = {
       .then((result) => {
         const resultBooks = result
         console.log(result)
-        hellper.renponse(res, resultBooks, 201, null)
+        hellper.renponse(res, resultBooks, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  deleteBook: (req, res) => {
+    const id = req.params.id
+    booksModels.deleteBook(id)
+      .then((result) => {
+        resultBooks = result
+        hellper.renponse(res, resultBooks, 204, null)
       })
       .catch((err) => {
         console.log(err)
