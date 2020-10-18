@@ -108,4 +108,5 @@ npm install
 ```
 npm run dev
 ```
+Postman Documentation [Postman collection](https://www.getpostman.com/collections/c1792eec0a232c5756ee)
 for Front-end this rest api [Click Here](https://github.com/deni-irawan40563/Web_Pos_app_for_F-B_Industry)
