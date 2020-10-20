@@ -1,5 +1,7 @@
 # Rest api Web Pos app for F&B Industry
 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c1792eec0a232c5756ee)
+
 ## Table of Contents
 
 * [About the Project](#about-the-project)
