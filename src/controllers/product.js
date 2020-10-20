@@ -126,9 +126,14 @@ const books = {
     } = req.body
     const data = {
       name,
-      image: `${process.env.BASE_URL}/uploads/image/${req.file.filename}`,
+      image,
       price,
       idCategory
+    }
+    if (req.files) {
+      data.image = req.files.map((file) => {
+        return process.env.BASE_URL+ '/uploads/image/'+ file.filename
+      }).join()
     }
     booksModels.insertBook(data)
       .then((result) => {
